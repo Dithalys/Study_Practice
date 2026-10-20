@@ -102,59 +102,34 @@ CREATE TABLE IF NOT EXISTS Event_menu(
     product_id INT REFERENCES Products(id)
 );
 
-INSERT INTO Roles(title) VALUES('Директор') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Администратор') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Менеджер') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Супервайзер') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Шеф-повар') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Повар-универсал') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Официант') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Доставщик') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Хелпер') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Roles(title) VALUES('Заказчик') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Roles(title) VALUES 
+('Директор'), ('Администратор'), ('Менеджер'), ('Супервайзер'), ('Шеф-повар'), 
+('Повар-универсал'), ('Официант'), ('Доставщик'), ('Хелпер'), ('Заказчик')
+ON CONFLICT (title) DO NOTHING;
 
-INSERT INTO Event_types(title) VALUES('Банкет') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_types(title) VALUES('Фуршет') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_types(title) VALUES('Кофе-брейк') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_types(title) VALUES('Коктейльная-вечеринка') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_types(title) VALUES('Пикник') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_types(title) VALUES('Гала-ужин') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Event_types(title) VALUES 
+('Банкет'), ('Фуршет'), ('Кофе-брейк'), ('Коктейльная-вечеринка'), ('Пикник'), ('Гала-ужин')
+ON CONFLICT (title) DO NOTHING;
 
-INSERT INTO Payment_types(title) VALUES('Наличные') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Payment_types(title) VALUES('Банковская карта') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Payment_types(title) VALUES('Безналичный расчет') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Payment_types(title) VALUES('СБП') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Payment_types(title) VALUES 
+('Наличные'), ('Банковская карта'), ('Безналичный расчет'), ('СБП')
+ON CONFLICT (title) DO NOTHING;
 
-INSERT INTO Event_statuses(title) VALUES('В обработке') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_statuses(title) VALUES('Отменен') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_statuses(title) VALUES('В работе') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Event_statuses(title) VALUES('Завершен') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Event_statuses(title) VALUES 
+('В обработке'), ('Отменен'), ('В работе'), ('Завершен')
+ON CONFLICT (title) DO NOTHING;
 
-INSERT INTO Product_categories(title) VALUES('Классический кофе') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Авторские рафы и латте') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Чай и согревающие напитки') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Лимонады и айс-кофе') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Канапе и брускетты') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Мини-бургеры и тарталетки') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Горячие закуски') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Десерты и выпечка') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Сладкие боксы и макаронс') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Веганское и фитнес меню') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Сиропы и топпинги') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Растительное молоко') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Холодные закуски и плато') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Салаты в верринах') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Стрит-фуд и мини-доги') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('BBQ и блюда на гриле') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Фруктовые тарелки и шпажки') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Безалкогольные коктейли') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Матча и альтернативный чай') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Свежевыжатые соки и смузи') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Детское фуршетное меню') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Праздничные торты') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Аренда посуды и текстиля') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Product_categories(title) VALUES('Услуги персонала и бариста') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Product_categories(title) VALUES 
+('Классический кофе'), ('Авторские рафы и латте'), ('Чай и согревающие напитки'), 
+('Лимонады и айс-кофе'), ('Канапе и брускетты'), ('Мини-бургеры и тарталетки'), 
+('Горячие закуски'), ('Десерты и выпечка'), ('Сладкие боксы и макаронс'), 
+('Веганское и фитнес меню'), ('Сиропы и топпинги'), ('Растительное молоко'), 
+('Холодные закуски и плато'), ('Салаты в верринах'), ('Стрит-фуд и мини-доги'), 
+('BBQ и блюда на гриле'), ('Фруктовые тарелки и шпажки'), ('Безалкогольные коктейли'), 
+('Матча и альтернативный чай'), ('Свежевыжатые соки и смузи'), ('Детское фуршетное меню'), 
+('Праздничные торты'), ('Аренда посуды и текстиля'), ('Услуги персонала и бариста')
+ON CONFLICT (title) DO NOTHING;
 
-INSERT INTO Ingredient_Units(title) VALUES('Кг') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Ingredient_Units(title) VALUES('Литр') ON CONFLICT (title) DO NOTHING;
-INSERT INTO Ingredient_Units(title) VALUES('Шт') ON CONFLICT (title) DO NOTHING;
+INSERT INTO Ingredient_Units(title) VALUES 
+('Кг'), ('Литр'), ('Шт')
+ON CONFLICT (title) DO NOTHING;
