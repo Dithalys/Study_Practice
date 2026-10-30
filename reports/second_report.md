@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS Event_Reviews (
 
 ## 📥 DML: Отрисовка данных
 
-### 1.
+### 1. Выборка пользователей по конкретной роли
 
 ```sql
 SELECT id, login, email FROM Users WHERE role_id = 1;
@@ -73,7 +73,7 @@ SELECT id, login, email FROM Users WHERE role_id = 1;
 
 ![Результат запроса 1](../images/practice2_query1.png)
 
-### 2.
+### 2. Алфавитный список уникальных фамилий
 
 ```sql
 SELECT DISTINCT last_name FROM Users WHERE last_name LIKE 'И%' ORDER BY last_name ASC;
@@ -81,7 +81,7 @@ SELECT DISTINCT last_name FROM Users WHERE last_name LIKE 'И%' ORDER BY last_na
 
 ![Результат запроса 2](../images/practice2_query2.png)
 
-### 3.
+### 3. Фильтрация товаров по ценовому диапазону и категориям
 
 ```sql
 SELECT * FROM Products WHERE (price BETWEEN 500.00 AND 1500.00) AND (category_id = 2 OR category_id = 3);
@@ -89,7 +89,7 @@ SELECT * FROM Products WHERE (price BETWEEN 500.00 AND 1500.00) AND (category_id
 
 ![Результат запроса 3](../images/practice2_query3.png)
 
-### 4.
+### 4. Выгрузка мероприятий по статусам с исключением менеджера
 
 ```sql
 SELECT id, title, budget FROM Events WHERE status_id IN (3, 4) AND manager_id NOT IN (10);
@@ -97,7 +97,7 @@ SELECT id, title, budget FROM Events WHERE status_id IN (3, 4) AND manager_id NO
 
 ![Результат запроса 4](../images/practice2_query4.png)
 
-### 5.
+### 5. Поиск записей с незаполненными данными
 
 ```sql
 SELECT id, title FROM Ingredients WHERE description IS NULL LIMIT 5;
@@ -105,7 +105,7 @@ SELECT id, title FROM Ingredients WHERE description IS NULL LIMIT 5;
 
 ![Результат запроса 5](../images/practice1_query5.png)
 
-### 6.
+### 6. Подсчет количества товаров в разрезе категорий
 
 ```sql
 SELECT category_id, COUNT(*) AS total_products FROM Products GROUP BY category_id;
@@ -113,7 +113,7 @@ SELECT category_id, COUNT(*) AS total_products FROM Products GROUP BY category_i
 
 ![Результат запроса 6](../images/practice2_query6.png)
 
-### 7.
+### 7. Фильтрация категорий по средней стоимости товаров
 
 ```sql
 SELECT category_id, AVG(price) AS average_price FROM Products GROUP BY category_id HAVING AVG(price) > 1000;
@@ -121,7 +121,7 @@ SELECT category_id, AVG(price) AS average_price FROM Products GROUP BY category_
 
 ![Результат запроса 7](../images/practice2_query7.png)
 
-### 8.
+### 8. Финансовая аналитика по клиентам
 
 ```sql
 SELECT client_id, SUM(amount) AS total_paid, MIN(amount) AS min_payment, MAX(amount) AS max_payment 
@@ -130,7 +130,7 @@ FROM Event_payments GROUP BY client_id;
 
 ![Результат запроса 8](../images/practice2_query8.png)
 
-### 9.
+### 9. Поиск с использованием экранирования спецсимволов
 
 ```sql
 SELECT title, description FROM Events WHERE description ILIKE '%\%%' ESCAPE '\';
@@ -138,7 +138,7 @@ SELECT title, description FROM Events WHERE description ILIKE '%\%%' ESCAPE '\';
 
 ![Результат запроса 9](../images/practice2_query9.png)
 
-### 10.
+### 10. Связывание сущностей через внутреннее соединение
 
 ```sql
 SELECT e.title AS event_name, m.last_name AS manager, c.last_name AS client 
@@ -149,7 +149,7 @@ INNER JOIN Users c ON e.client_id = c.id;
 
 ![Результат запроса 10](../images/practice2_query10.png)
 
-### 11.
+### 11. Левое соединение с обработкой значений NULL
 
 ```sql
 SELECT p.title, COALESCE(c.title, 'Без категории') AS category_name 
@@ -159,7 +159,7 @@ LEFT JOIN Product_categories c ON p.category_id = c.id;
 
 ![Результат запроса 11](../images/practice2_query11.png)
 
-### 12.
+### 12. Правое соединение для поиска используемых справочников
 
 ```sql
 SELECT DISTINCT pt.title FROM Event_payments ep 
@@ -169,7 +169,7 @@ WHERE ep.id IS NOT NULL;
 
 ![Результат запроса 12](../images/practice2_query12.png)
 
-### 13.
+### 13. Полное внешнее соединение для поиска несоответствий
 
 ```sql
 SELECT e.id AS event_id, ep.id AS payment_id FROM Events e 
@@ -179,7 +179,7 @@ WHERE e.id IS NULL OR ep.id IS NULL;
 
 ![Результат запроса 13](../images/practice2_query13.png)
 
-### 14.
+### 14. Проверка существования связанных записей (EXISTS)
 
 ```sql
 SELECT id, login FROM Users u 
@@ -188,7 +188,7 @@ WHERE EXISTS (SELECT 1 FROM Event_payments ep WHERE ep.client_id = u.id);
 
 ![Результат запроса 14](../images/practice2_query14.png)
 
-### 15.
+### 15. Фильтрация с использованием скалярного подзапроса
 
 ```sql
 SELECT title, price FROM Products 
@@ -197,7 +197,7 @@ WHERE price > (SELECT AVG(price) FROM Products);
 
 ![Результат запроса 15](../images/practice2_query15.png)
 
-### 16.
+### 16. Объединение множеств с разметкой типа данных (UNION ALL)
 
 ```sql
 SELECT first_name, last_name, phone_number, 'Клиент' AS user_type FROM Users WHERE role_id = (SELECT id FROM Roles WHERE title = 'Client')
@@ -207,7 +207,7 @@ SELECT first_name, last_name, phone_number, 'Персонал' AS user_type FROM
 
 ![Результат запроса 16](../images/practice2_query16.png)
 
-### 17.
+### 17. Классификация данных с помощью условной логики (CASE)
 
 ```sql
 SELECT id, title, budget,
@@ -217,7 +217,7 @@ FROM Events;
 
 ![Результат запроса 17](../images/practice2_query17.png)
 
-### 18.
+### 18. Поиск максимального значения в группах через CTE и оконные функции
 
 ```sql
 WITH RankedProducts AS (
@@ -229,7 +229,7 @@ SELECT category_id, title, price FROM RankedProducts WHERE rank = 1;
 
 ![Результат запроса 18](../images/practice2_query18.png)
 
-### 19.
+### 19. Ранжирование менеджеров по объему сборов
 
 ```sql
 SELECT manager_id, SUM(budget) as total_budget, DENSE_RANK() OVER (ORDER BY SUM(budget) DESC) as manager_rank
@@ -238,7 +238,7 @@ FROM Events GROUP BY manager_id;
 
 ![Результат запроса 19](../images/practice2_query19.png)
 
-### 20.
+### 20. Пагинация данных (Постраничный вывод)
 
 ```sql
 SELECT title, quantity FROM Ingredients ORDER BY title OFFSET 10 ROWS FETCH FIRST 5 ROWS ONLY;
