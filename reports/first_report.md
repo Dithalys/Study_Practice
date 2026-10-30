@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS Event_menu(
 
 ---
 
-## 📥 DML: Наполнение данными (Seed)
+## 📥 DML: Наполнение данными
 
 ```sql
 -- заполнение справочников
