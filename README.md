@@ -19,7 +19,7 @@
 
 ## 📸 Скриншоты
 
-| ER-Диаграмма | Личный кабинет |
+| ER-Диаграмма | Мастер-план |
 | :---: | :---: |
 | <img src="./images/db_diagramm.png" width="400" alt="ER-Диаграмма"/> | <img src="./images/leclerc.jpg" width="400" alt="Мастер-план"/> |
 
