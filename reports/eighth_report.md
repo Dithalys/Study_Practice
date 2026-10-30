@@ -26,7 +26,9 @@ SELECT pg_reload_conf();
 ```
 
 
-### 2. Мониторинг собранной статистики
+## Мониторинг собранной статистики
+
+### 1. Статистика по обращениям к таблицам
 
 ```sql
 SELECT 
@@ -41,6 +43,9 @@ FROM pg_stat_user_tables;
 
 ![Результат запроса 1](../images/practice8_query1.png)
 
+### 2. Статистика по использованию индексов
+
+
 ```sql
 SELECT 
     relname AS table_name,
@@ -54,6 +59,8 @@ FROM pg_stat_user_tables;
 
 ![Результат запроса 2](../images/practice8_query2.png)
 
+### 3. Статистика по времени чтения и записи блоков данных
+
 ```sql
 SELECT 
     relname AS table_name,
@@ -66,6 +73,8 @@ FROM pg_stat_user_tables;
 ```
 
 ![Результат запроса 3](../images/practice8_query3.png)
+
+### 4. Отслеживание работы пользовательских функций
 
 ```sql
 SELECT 
