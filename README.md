@@ -21,7 +21,7 @@
 
 | ER-Диаграмма | Личный кабинет |
 | :---: | :---: |
-| <img src="./images/db_diagramm.png" width="400" alt="ER-Диаграмма"/> | <img src="https://placeholder.com" width="400" alt="Личный кабинет"/> |
+| <img src="./images/db_diagramm.png" width="400" alt="ER-Диаграмма"/> | <img src="./images/leclerc.jpg" width="400" alt="Мастер-план"/> |
 
 ---
 
