@@ -82,11 +82,8 @@ CREATE OR REPLACE PROCEDURE hr.register_event_payment(
 )
 AS $$
 BEGIN
-    -- Вставляем запись о платеже
     INSERT INTO Event_payments(amount, event_id, client_id, payment_type_id)
     VALUES (p_amount, p_event_id, p_client_id, p_payment_type_id);
-
-    -- Обновляем текущий оплаченный бюджет мероприятия
     UPDATE Events
     SET budget = budget + p_amount
     WHERE id = p_event_id;
@@ -99,14 +96,11 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE PROCEDURE close_event_and_spend_ingredients(p_event_id INT)
 AS $$
 BEGIN
-    -- Обновляем количество ингредиентов на складе на основе состава меню мероприятия
     UPDATE Ingredients i
     SET quantity = i.quantity - (em.quantity * pc.quantity)
     FROM Event_menu em
     JOIN Product_compound pc ON em.product_id = pc.product_id
     WHERE em.event_id = p_event_id AND pc.ingredients_id = i.id;
-
-    -- Переводим статус мероприятия в "Завершен" (id = 4 согласно вашему INSERT)
     UPDATE Events
     SET status_id = 4
     WHERE id = p_event_id;
